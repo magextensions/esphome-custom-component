@@ -46,7 +46,7 @@ custom_component:
       auto my_component = new MyComponent();
       return { my_component };
     components:
-      id: my_component
+      - id: my_component
 ```
 
 ## LICENSE
