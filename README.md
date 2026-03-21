@@ -19,7 +19,28 @@ external_components:
     components: [ custom, custom_component ]
 ```
 
-This should be enough to enable compilation of custom components again.
+#### Using ESPHome v2026.3 or later
+
+ESPHome v2026.3.0 changed component registration, which means that any calls to `App.register_component()` will cause compilation errors. This may require some changes to your YAML.
+
+If you had something like this before:
+```
+custom_component:
+  - lambda: |-
+      auto my_component = new MyComponent();
+      App.register_component(my_component);
+      return { my_component };
+```
+
+It should now look like this:
+```
+custom_component:
+  - lambda: |-
+      auto my_component = new MyComponent();
+      return { my_component };
+    components:
+      id: my_component
+```
 
 ## LICENSE
 
