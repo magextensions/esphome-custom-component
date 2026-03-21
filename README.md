@@ -10,12 +10,19 @@ I lifted the custom component code from ESPHome 2024.10.0 as-is. It seems to wor
 
 ## USAGE
 
-Add the following to your project's YAML:
+You need to add the custom components to your YAML. How to do that depends on which version of ESPHome you use.
+
+Before ESPHome v2026.3.0:
 ```
 external_components:
-  - source:
-      type: git
-      url: https://github.com/robertklep/esphome-custom-component
+  - source: github://robertklep/esphome-custom-component@v1.0.0
+    components: [ custom, custom_component ]
+```
+
+After ESPHome v2026.3.0:
+```
+external_components:
+  - source: github://robertklep/esphome-custom-component
     components: [ custom, custom_component ]
 ```
 
